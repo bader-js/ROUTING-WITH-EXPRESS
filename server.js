@@ -10,12 +10,12 @@ const app = express()
 // })
 
 
-app.use(date = (res, next)=> {
-    var hour = new Date().getHours(); 
-    if (hour > 17 <=8)  
-    res.send(' <h1>ouvert de 8h à 17h</h1>')
-    next()
-})
+app.use(date = (req, res, next)=> {
+    var hour = new Date().getHours();
+     hour > 17  || hour <= 11
+    ? res.send(' <h1>ouvert de 8h à 17h</h1>')
+  : next()
+});
 
 app.use (express.static(__dirname+'/public'))
 
